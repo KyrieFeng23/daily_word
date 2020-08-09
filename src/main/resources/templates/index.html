@@ -1,18 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Word</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $(".publish").click(function () {
+                var user_id = $(".user_id").val();
+                var content = $(".content").val().replace(/\n/g,'<br/>');
+
+                location.href="publish?user_id="+user_id+"&content="+content;
+            })
+        })
+    </script>
+    <style type="text/css">
+        /*.bg{*/
+        /*    filter: blur(20px);*/
+        /*    -webkit-filter: blur(20px);  !* chrome, opera *!*/
+        /*    -ms-filter: blur(20px);*/
+        /*    -moz-filter: blur(20px);*/
+        /*    position: absolute;*/
+        /*    height: 100%;*/
+        /*    width: 100%;*/
+        /*    z-index: -1;*/
+        /*}*/
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        html {
+            overflow-x: hidden; overflow-y: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1 align="center">
-        Daily Word
-    </h1>
-    <form action="/publish" method="post">
+<!--    <img class="bg" src="https://open.saintic.com/api/bingPic">-->
+    <div class="jumbotron">
+        <h1 align="center">
+            Daily Word
+        </h1>
+    </div>
+    <div class="container">
+        <input type="hidden" name="user_id" class="user_id" value="1">
+        <form role="form">
+            <div class="form-group">
+                <textarea class="form-control content" rows="3" placeholder="想说些什么..."
+                name="content"></textarea>
+            </div>
+        </form>
+<!--        <input placeholder="想说些什么..." name="content">-->
+        <button type="submit" name="submit" class="publish">发布</button>
 
-    <input type="hidden" name="user_id" value="1">
-    <input placeholder="想说些什么..." name="content">
-    <button type="submit" name="submit">发布</button>
-    </form>
+
+    <div th:each="word_list, wordliststatus:${word_list}">
+        <hr>
+        <div>
+            <span th:text="${word_list.getTime()}">
+
+            </span>
+            <h3 th:utext="${word_list.getContent()}">
+
+            </h3>
+        </div>
+
+    </div>
+    </div>
 </body>
 </html>
