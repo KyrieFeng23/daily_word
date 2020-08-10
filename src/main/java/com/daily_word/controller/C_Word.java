@@ -1,5 +1,6 @@
 package com.daily_word.controller;
 
+import com.daily_word.entity.User;
 import com.daily_word.entity.Word;
 import com.daily_word.service.S_User;
 import com.daily_word.service.S_Word;
@@ -24,7 +25,10 @@ public class C_Word {
 
     @RequestMapping("index")
     public String index(Model model, HttpSession session){
-        int user_id=1;
+        User user=(User) session.getAttribute("USER_SESSION");
+        model.addAttribute("User_INFO",user);
+        int user_id = user.getUser_id();
+        //int user_id=1;
         Word word=new Word();
         List<Word> word_list=s_word.get_ones_word(user_id);
         model.addAttribute("word_list",word_list);

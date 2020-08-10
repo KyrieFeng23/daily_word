@@ -1,0 +1,64 @@
+<!doctype html>
+<meta charset="utf-8">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<title>登录</title>
+<!--<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}"/>-->
+<!--<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>-->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/login.css">
+<script src="js/login.js"></script>
+</head>
+
+<body>
+<!--	顶栏logo以及改进建议-->
+	<div class="container-fluid">
+	<div class="header row">
+		<div class="col-md-2 col-md-offset-2"><h3>Daily Word</h3></div>
+<!--		<div class="advice col-md-2 col-md-offset-4">-->
+<!--			<img src="images/message.png"><a href="https://survey.taobao.com/survey/Q095thIx2" target="_blank">"登录界面"改进建议</a>-->
+<!--		</div>-->
+	</div>
+<!--	中部登录框-->
+	<div class="main row">
+		<div class="box col-md-2 col-md-offset-7">
+		<div class="main-container">
+		<div class="tips1">
+			密码登录
+		</div>
+			<font color="red">
+<!--				 提示信息-->
+				<span id="message" th:text="${msg}"></span>
+			</font>
+		<form class="form" action="/login" method="post" onsubmit="return check()">
+		<div class="userbox"> 
+			<label for="username"></label>
+			<input type="text" name="username" id="username" placeholder="会员名/手机号/邮箱" />
+		</div>
+		<div class="passwdbox"> 
+			<label for="passwd"></label>
+			<input type="password" name="password" id="passwd" placeholder="请输入登录密码" />
+		</div>
+		<div class="submitbox">
+			<button type="submit" name="submit">登录</button>
+		</div>
+		<div class="forget-register">
+			<a href="https://reg.taobao.com/member/newbie.htm?spm=a2107.1.0.0.776d11d909tJhA&from=login" class="register" target="_blank">免费注册</a>
+			<a href="https://passport.taobao.com/ac/nick_find.htm?spm=a2107.1.0.0.776d11d909tJhA&from_site=0&lang=zh_CN&app_name=tbTop" class="forget" target="_blank">忘记用户名</a>
+			<a href="https://passport.taobao.com/ac/password_find.htm?spm=a2107.1.0.0.776d11d909tJhA&from_site=0&lang=zh_CN&app_name=tbTop&tracelog=signin_main_pass" class="forget" target="_blank">忘记密码</a>
+		</div>
+		</form>
+		</div>
+	</div>
+	</div>
+	</div>
+	
+	<div class="footer row">
+		<div align="center">
+		Copyright © 2020 FYF All Rights Reserved.<br>
+		FYF版权所有
+		</div>
+	</div>
+</body>
+</html>

@@ -34,11 +34,51 @@
         html {
             overflow-x: hidden; overflow-y: auto;
         }
+        a:active,a:visited,a:focus,a:hover{
+            text-decoration: none;
+        }
+        .user-info{
+            line-height: 28px;
+            height: 30px;
+        }
+        .user-info a{
+            color: #000;
+        }
+        .user-info a:hover{
+            color: black;
+        }
+        a{
+            color: black;
+        }
+        a:hover{
+            color: black;
+        }
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
     </style>
 </head>
 <body>
 <!--    <img class="bg" src="https://open.saintic.com/api/bingPic">-->
-    <div class="jumbotron">
+    <div class="jumbotron" style="padding-top: 10px">
+        <div class="container user-info">
+            <div class="col-md-2" style="padding: 0px">
+                欢迎您，<a href=""><span th:text="${User_INFO.getUsername()}"></span></a>
+            </div>
+            <div class="col-md-1 col-md-offset-5">
+
+            </div>
+            <div class="col-md-1">
+<!--                <a th:href="to_collect">收藏夹</a>-->
+            </div>
+            <div class="col-md-1">
+<!--                <a th:href="@{show_cart(b_s_id=${B_S_INFO.getB_s_id()})}">购物车</a>-->
+            </div>
+            <div class="col-md-2" align="right">
+                <a href="/logout">退出登录</a>
+            </div>
+        </div>
         <h1 align="center">
             Daily Word
         </h1>

@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+html { 
+	overflow-x: hidden; overflow-y: auto; 
+}
+.header{
+	background: rgba(255,255,255,1.00);
+	height: 70px;
+	line-height: 70px;
+	box-shadow:0 0 2px 0 #999999;
+}
+.logo{
+	width: auto;
+	height: auto;
+	max-width: 50%;
+	max-height: 50%; 
+}
+a{
+	text-decoration:none;
+	color: #404040;
+}
+a:hover{
+	text-decoration:none;
+    color:red;		        
+}
+*{
+	margin:0px;
+	padding:0px;
+}
+.advice{
+	padding-top:10px;
+}
+.advice img{
+	vertical-align:text-bottom;
+}
+
+
+/*登录框*/
+.main{
+	 height:600px;
+	 background:url("../images/bg.jpg") no-repeat center 0;
+}
+
+ /*登录框css*/
+.box{
+	width:350px;	 
+	position:absolute;
+	top: 150px;
+	background:#E8E8E9;  
+}
+
+.main-container{
+       width:300px;
+	  margin:0 auto;
+	  
+}
+
+.tips1{
+      width:300px;
+	  padding-top:30px;
+	  font-weight:bold; 
+	  font-size:16px;
+}
+
+.form{
+      width:300px; 
+}
+
+.form .userbox{
+      width:300px;
+	   position:relative;
+}
+
+.userbox label{
+      width:41px;
+	  height:42px;
+      background:url("../images/user.png");
+	  position:absolute;
+	  left:0px;
+	  top:1px;
+}
+
+
+.userbox input#username,.passwdbox input#passwd{
+     width: 86%;
+	 height: 42px;
+	 margin: 32px 0 0 41px;
+	 padding-left: 10px;
+	 display:block;
+	 border: none;
+}
+
+.userbox span{
+	 position: absolute;
+	 left: 51px;
+	 top: 14px;
+	 font-size: 14px;
+	 color: #999;
+}
+ 
+ .form .passwdbox{
+      width:300px;
+	  position:relative;
+}
+
+.passwdbox label{
+      width:41px;
+	  height:42px;
+      background:url("../images/password.png");
+	  position:absolute;
+	  left:0px;
+	  top:1px;
+}
+
+
+/*.passwdbox input#passwd{
+      width:300px;
+	  height:42px;
+	  margin-top:32px;
+	  display:block;
+}*/
+ 
+.form .submitbox{
+      width:300px;
+}
+
+.submitbox button{
+      width:100%;
+	  height:44px;
+	  margin-top:32px;
+	  font-size:16px;
+	  font-weight:600;
+	  color:#fff;
+	  text-align:center;
+	  letter-spacing:5px;
+	  background:#f40;
+	  border: none;
+	  border-radius: 3.2px;
+}
+
+
+ 
+.form .loginbox{
+      width:300px;
+	  margin-top:24px;
+}
+
+ 
+ .loginbox a.sina,.loginbox a.alipay{
+     margin-right:26px;
+     display:inline-block;
+	 margin:0;
+	 padding:0;
+	 
+}
+
+.forget-register{
+      width:300px;
+	  padding: 18px 0 40px 0;
+ }  
+  
+ .forget-register a.register{
+     float:right;
+}
+
+.forget-register a.forget{
+      margin-right:12px;
+     float:right;
+}
