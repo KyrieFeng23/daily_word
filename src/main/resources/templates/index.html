@@ -6,16 +6,17 @@
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function (){
-            $(".publish").click(function () {
-                var user_id = $(".user_id").val();
-                var content = $(".content").val().replace(/\n/g,'<br/>');
 
-                location.href="publish?user_id="+user_id+"&content="+content;
-            })
-        })
-    </script>
+<!--    <script type="text/javascript">-->
+<!--        $(document).ready(function (){-->
+<!--            $(".publish").click(function () {-->
+<!--                var user_id = $(".user_id").val();-->
+<!--                var content = $(".content").val().replace(/\n/g,'<br/>');-->
+
+<!--                location.href="publish?user_id="+user_id+"&content="+content;-->
+<!--            })-->
+<!--        })-->
+<!--    </script>-->
     <style type="text/css">
         /*.bg{*/
         /*    filter: blur(20px);*/
@@ -84,16 +85,20 @@
         </h1>
     </div>
     <div class="container">
-        <input type="hidden" name="user_id" class="user_id" value="1">
-        <form role="form">
-            <div class="form-group">
-                <textarea class="form-control content" rows="3" placeholder="想说些什么..."
-                name="content"></textarea>
-            </div>
-        </form>
-<!--        <input placeholder="想说些什么..." name="content">-->
-        <button type="submit" name="submit" class="publish">发布</button>
+        <form method="get" action="/publish">
+        <input type="hidden" name="user_id" class="user_id" id="user_id" value="1">
+        <div id="editor"></div>
+            <textarea style="display: none" name="content" id="content"></textarea>
 
+<!--        <form role="form">-->
+<!--            <div class="form-group">-->
+<!--                <textarea class="form-control content" rows="3" placeholder="想说些什么..."-->
+<!--                name="content"></textarea>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--        <input placeholder="想说些什么..." name="content">-->
+        <button type="submit"  class="publish" id="publish">发布</button>
+        </form>
 
     <div th:each="word_list, wordliststatus:${word_list}">
         <hr>
@@ -108,5 +113,34 @@
 
     </div>
     </div>
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    // 或者 var editor = new E( document.getElementById('editor') )
+    //    获取隐藏控件<textarea>的id，用于显示内容，也方便后台获取内容
+    var $text1 = $('#content');
+
+    // 监控wangEditor中的内容变化，并将html内容同步更新到 textarea
+    editor.customConfig.onchange = function (html) {
+        $text1.val(html);
+    };
+    //    设置上传本地图片到服务器
+    // editor.customConfig.uploadImgServer = '/upload';
+    editor.create();
+    $text1.val(editor.txt.html());// 初始化 textarea 的值
+
+    // document.getElementById('publish').addEventListener('click', function () {
+    //     // 读取 html
+    //     var user_id = document.getElementById('user_id').value;
+    //     // alert(user_id)
+    //     var content=editor.txt.html();
+    //     // content=escape(content).replace(/\+/g, '%2B').replace(/\"/g,'%22').replace(/\'/g, '%27').replace(/\//g,'%2F');
+    //     alert(content)
+    //     window.location.href="publish?user_id="+user_id+"&content="+content;
+    // }, false)
+
+</script>
 </body>
 </html>

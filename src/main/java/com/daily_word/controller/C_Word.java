@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,7 +37,9 @@ public class C_Word {
     }
 
     @RequestMapping(value = "publish",method = RequestMethod.GET)
-    public String publish(int user_id,String content){
+    public String publish(HttpServletRequest request){
+        int user_id=Integer.parseInt(request.getParameter("user_id"));
+        String content=request.getParameter("content");
         int type=1;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String date_time = df.format(new Date());//调用时间函数生成

@@ -13,7 +13,7 @@ import java.util.List;
 public interface Word_InfoMapper {
 
     @Insert("insert into word(content,time,type,user_id) " +
-            "values(#{content},#{date_time},#{type},#{user_id})")
+            "values('"+"${content}"+"',#{date_time},#{type},#{user_id})")
     int add_word(int user_id,String content,int type,String date_time);
 
     //展示某个user_id所有的word，根据user_id来筛选
